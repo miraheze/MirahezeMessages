@@ -490,7 +490,6 @@ class Main implements
 			'createwiki-email-subject',
 			'createwiki-error-subdomaintaken',
 			'createwiki-help-bio',
-			'createwiki-help-category',
 			'createwiki-help-reason',
 			'createwiki-help-subdomain',
 			'createwiki-label-reason',
