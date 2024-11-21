@@ -57,6 +57,22 @@ class RequestWiki implements
 				'type' => 'url',
 			]
 		);
+
+		RequestWikiFormUtils::insertFieldAfter(
+			$formDescriptor,
+			afterKey: 'prupose',
+			newKey: 'classification',
+			newField:[
+				'label-message' => 'requestwiki-label-classification',
+				'type' => 'select',
+				'options' => [
+					'Personal (notes, own ideas, etc.)' => 'Personal (notes, own ideas, etc.)',
+					'Non-wiki community (Discord server, small group, etc.)' => 'Non-wiki community (Discord server, small group, etc.)'
+					'Wiki community (existing)' => 'Wiki community (existing)',
+					'Professional organization (company, university, association, etc.)' => 'Professional organization (company, university, association, etc.)',
+					'Other' => 'Other',
+				],
+		);
 	}
 
 	public function onRequestWikiQueueFormDescriptorModify(
@@ -111,6 +127,25 @@ class RequestWiki implements
 				'section' => 'editing',
 				'hide-if' => [ '!==', 'edit-source', '1' ],
 				'default' => $wikiRequestManager->getExtraFieldData( 'sourceurl' ),
+			]
+		);
+
+		RequestWikiFormUtils::insertFieldAfter(
+			$formDescriptor,
+			afterKey: 'edit-purpose',
+			newKey: 'edit-classification',
+			newField: [
+				'label-message' => 'requestwiki-label-classification',
+				'type' => 'select',
+				'options' => [
+					'Personal (notes, own ideas, etc.)' => 'Personal (notes, own ideas, etc.)',
+					'Non-wiki community (Discord server, small group, etc.)' => 'Non-wiki community (Discord server, small group, etc.)'
+					'Wiki community (existing)' => 'Wiki community (existing)',
+					'Professional organization (company, university, association, etc.)' => 'Professional organization (company, university, association, etc.)',
+					'Other' => 'Other',
+				],
+				'section' => 'editing',
+				'default' => $wikiRequestManager->getExtraFieldData( 'classification' ),
 			]
 		);
 
